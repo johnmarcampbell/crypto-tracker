@@ -26,6 +26,12 @@
         <div class="navbar-brand">
             <p>Flask/Bokeh Demo</p>
         </div>
+
+        <!-- Collect navbar links, etc. -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="https://github.com/johnmarcampbell/crypto-tracker">Github</a></li>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -34,8 +40,10 @@
 <div class="container">
     <div class="page-header">
         <div class="jumbotron">
+            <h2>Cryptocurrency price tracker</h2>
+            <div align="center">
             {{ div | safe }}
-            <h2>Content goes here</h2>
+            </div>
         </div>
     </div>
 </div>
