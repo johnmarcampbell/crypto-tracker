@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request
+from flask_bootstrap import Bootstrap
 
+bootstrap = Bootstrap()
 app = Flask(__name__)
+bootstrap.init_app(app)
 
 # Index page
 @app.route('/')
 def index():
-    return 'Hello world!'
+    return render_template('index.html')
 
 # With debug=True, Flask server will auto-reload 
 # when there are code changes

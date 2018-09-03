@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block title %}
+    Flask/Bokeh demo
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-brand">
+            <p>Flask/Bokeh Demo</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <div class="jumbotron">
+            <h2>Content goes here</h2>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+<div class="container">
+    <p class="text-muted">Cryptocurrency price data is collected from <a href=https://pro.coinbase.com/trade/BTC-USD>Coinbase Pro</a>.</p>
+</div>
+</footer>
+
+{% endblock %}
