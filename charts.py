@@ -48,4 +48,6 @@ def make_rate_plot(data, crypto_label='BTC', fiat_label='USD'):
     p.add_layout(axis_right, 'right')
     p.rect(data['time'], data['volume']/2, width=1, height=data['volume'], y_range_name='volumes', color='grey', alpha=.4)
 
+    p.toolbar.logo = None
+
     return p
