@@ -41,6 +41,12 @@
     <div class="page-header">
         <div class="jumbotron">
             <h2>Cryptocurrency price tracker</h2>
+             <form action="" method="post">
+                {{ form.crypto }}
+                {{ form.fiat }}
+                {{ form.gran }}
+                {{ form.submit }}
+            </form>
             <div align="center">
             {{ div | safe }}
             </div>
