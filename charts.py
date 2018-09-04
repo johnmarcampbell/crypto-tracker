@@ -40,13 +40,13 @@ def make_rate_plot(data, crypto_label='BTC', fiat_label='USD'):
     p.yaxis.axis_label = 'Price (' + fiat_label + ')'
     p.y_range = Range1d(*axis_range(data['close']))
     p.yaxis.formatter = NumeralTickFormatter(format="$0,0.")
-    p.line(x='time', y='close', line_width=2, source=source)
+    p.line(x='time', y='close', line_width=2, source=source, legend=crypto_label + ' Price')
     
     # Set up the second y-axis
     p.extra_y_ranges = {'volumes': Range1d(start=0, end=axis_range(data['volume'])[1])}
     axis_right = LinearAxis(y_range_name='volumes', axis_label='Trade Volume (# of ' + crypto_label + ')', formatter=NumeralTickFormatter(format="0,0a"))
     p.add_layout(axis_right, 'right')
-    p.rect(data['time'], data['volume']/2, width=1, height=data['volume'], y_range_name='volumes', color='grey', alpha=.4)
+    p.rect(data['time'], data['volume']/2, width=1, height=data['volume'], y_range_name='volumes', color='grey', alpha=.4, legend='Trade Volume')
 
     p.toolbar.logo = None
 
