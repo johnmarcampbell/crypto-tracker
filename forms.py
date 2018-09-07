@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, SubmitField
+from wtforms import SelectField, StringField, SubmitField
+from wtforms.validators import DataRequired
 
-class GetDataForm(FlaskForm):
+class GetCryptoForm(FlaskForm):
     crypto = SelectField('Cryptocurrency',
             choices=[('btc','BTC'),
                     ('eth', 'ETH'),
@@ -22,4 +23,8 @@ class GetDataForm(FlaskForm):
                     ('86400', '1 day'),
                     ])
 
+    submit = SubmitField('Get Rates')
+
+class GetStockForm(FlaskForm):
+    stock = StringField('Ticker Symbol:', validators=[DataRequired()])
     submit = SubmitField('Get Rates')

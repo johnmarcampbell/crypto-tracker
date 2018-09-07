@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from charts import get_product_data, make_rate_plot
-from forms import GetDataForm
+from forms import GetCryptoForm
 from bokeh.embed import components
 
 bootstrap = Bootstrap()
@@ -12,7 +12,7 @@ bootstrap.init_app(app)
 # Index page
 @app.route('/', methods=['GET', 'POST'])
 def index(crypto='BTC', fiat='USD', gran=86400):
-    form = GetDataForm()
+    form = GetCryptoForm()
 
     # This is not the optimal way to do it. I should really be using the 
     # form.validate_on_submit() method, but this is always failing for 
