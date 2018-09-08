@@ -1,7 +1,9 @@
 import cbpro
+from iexfinance import get_historical_data
 import pandas as pd
 from bokeh.plotting import figure, ColumnDataSource
 from bokeh.models import LinearAxis, Range1d, NumeralTickFormatter, HoverTool
+from datetime import datetime, timedelta
 
 def get_product_data(product='BTC-USD', granularity=86400):
     ''' Retrieves price data for a given trading pair from Coinbase Pro API
@@ -17,6 +19,27 @@ def get_product_data(product='BTC-USD', granularity=86400):
     data = public_client.get_product_historic_rates(product, granularity=granularity)
     data = pd.DataFrame(data, columns=headings)
     data['time'] = data['time'] * 1000. # Change microsenconds to milliseconds
+    return data
+
+def get_stock_data(ticker='GOOG'):
+    ''' Retrieves price data for a given stock from the IEX Trading API
+
+    :ticker: The ticker symbol for the stock you want
+    :rtype: pandas.DataFrame
+    '''
+    end = datetime.utcnow()
+    start = end - timedelta(days=365)
+
+    data = get_historical_data(ticker, start=start, end=end, output_format='pandas')
+
+    # Manipulate the data frame a little to get it into the format that make_rate_plot()
+    # expects
+    data.reset_index(level=0, inplace=True)
+    data.rename(columns={'date': 'time'}, inplace=True)
+    f = lambda x: int(datetime.strptime(x, '%Y-%m-%d').strftime('%s'))
+    data['time'] = data['time'].apply(f)
+    data['time'] = data['time'] * 1000 # Change microsenconds to milliseconds
+
     return data
 
 def make_rate_plot(data, crypto_label='BTC', fiat_label='USD'):
