@@ -15,12 +15,12 @@ class GetCryptoForm(FlaskForm):
                     ])
 
     gran = SelectField('Time Slices',
-            choices=[('60','1 minute'),
-                    ('300', '5 minutes'),
-                    ('900', '15 minutes'),
-                    ('3600', '1 hour'),
+            choices=[('86400', '1 day'),
                     ('21600', '6 hours'),
-                    ('86400', '1 day'),
+                    ('3600', '1 hour'),
+                    ('900', '15 minutes'),
+                    ('300', '5 minutes'),
+                    ('60','1 minute')
                     ])
 
     submit = SubmitField('Get Rates')
