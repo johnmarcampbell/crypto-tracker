@@ -12,20 +12,23 @@
     <div class="page-header">
         <div class="jumbotron">
             <h2>Cryptocurrency price tracker</h2>
+            <div align="center">
              <form action="" method="post">
                 {{ form.crypto }}
                 {{ form.fiat }}
                 {{ form.gran }}
                 {{ form.submit }}
             </form>
-            <div align="center">
             {{ div | safe }}
             </div>
         </div>
     </div>
 </div>
 
-
-{{ super() }}
+<footer class="footer">
+<div class="container">
+    <p class="text-muted">Cryptocurrency price data is collected from <a href=https://pro.coinbase.com/trade/BTC-USD>Coinbase Pro</a>.</p>
+</div>
+</footer>
 
 {% endblock %}
