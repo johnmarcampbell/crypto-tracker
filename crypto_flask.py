@@ -25,7 +25,7 @@ def index(crypto='BTC', fiat='USD', gran=86400):
 
     product = crypto + '-' + fiat
     data = get_product_data(product=product, granularity=gran)
-    fig = make_rate_plot(data)
+    fig = make_rate_plot(data, crypto_label=crypto)
     script, div = components(fig)
 
     return render_template('index.html', script=script, div=div, form=form)
@@ -39,7 +39,7 @@ def stock(ticker='GOOG'):
         ticker=form.stock.data
 
     data = get_stock_data(ticker=ticker)
-    fig = make_rate_plot(data)
+    fig = make_rate_plot(data, crypto_label=ticker)
     script, div = components(fig)
 
     return render_template('stock.html', script=script, div=div, form=form)

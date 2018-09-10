@@ -4,9 +4,9 @@ from wtforms.validators import DataRequired
 
 class GetCryptoForm(FlaskForm):
     crypto = SelectField('Cryptocurrency',
-            choices=[('btc','BTC'),
-                    ('eth', 'ETH'),
-                    ('bch', 'BCH')
+            choices=[('BTC','BTC'),
+                    ('ETH', 'ETH'),
+                    ('BCH', 'BCH')
                     ])
 
     fiat = SelectField('Fiat currency',

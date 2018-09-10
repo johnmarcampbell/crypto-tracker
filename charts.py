@@ -95,7 +95,7 @@ def make_rate_plot(data, crypto_label='BTC', fiat_label='USD'):
     # Set up the second y-axis
     p.extra_y_ranges = {'volumes': Range1d(start=0, end=axis_range(data['volume'])[1])}
     axis_opts = {'y_range_name': 'volumes',
-            'axis_label': 'Trade Volume (# of ' + crypto_label + ')',
+            'axis_label': 'Trade Volume',
             'formatter': NumeralTickFormatter(format="0,0a")
             }
     p.add_layout(LinearAxis(**axis_opts), 'right')
