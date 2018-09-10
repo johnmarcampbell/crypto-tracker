@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from charts import get_product_data, make_rate_plot, get_stock_data
-from forms import GetCryptoForm
+from forms import GetCryptoForm, GetStockForm
 from bokeh.embed import components
 
 bootstrap = Bootstrap()
@@ -33,11 +33,16 @@ def index(crypto='BTC', fiat='USD', gran=86400):
 # Stock page
 @app.route('/stock', methods=['GET', 'POST'])
 def stock(ticker='GOOG'):
+    form = GetStockForm()
+
+    if request.method == 'POST':
+        ticker=form.stock.data
+
     data = get_stock_data(ticker=ticker)
     fig = make_rate_plot(data)
     script, div = components(fig)
 
-    return render_template('stock.html', script=script, div=div)
+    return render_template('stock.html', script=script, div=div, form=form)
 
 # With debug=True, Flask server will auto-reload 
 # when there are code changes
